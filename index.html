@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="icon" href="./images/favicon.jpeg" type="image/x-icon">
+    <title>Clove Dental</title>
+    <style>
+        /* CSS for styling the navigation bar */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            /* overflow: hidden; */
+        }
+
+        nav {
+            background-color: rgb(250, 221, 202);
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 40px;
+            margin-top: 5px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            position: relative;
+        }
+
+        a:hover {
+            background-color: #fdbe8b;
+        }
+
+        /* Styles for the dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            padding: 10px;
+            z-index: 1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .book-appointment {
+            background-color: #f79647;
+            border: solid #f79647;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 30px;
+        }
+
+        .help-button {
+            background-color: rgb(250, 221, 202);
+            border: 1px solid #f79647;
+            color: black;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 30px;
+        }
+
+        .help-button i {
+            margin-right: 5px;
+        }
+
+        /* Dropdown arrow icon */
+        .arrow {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 5px;
+            border: solid orange;
+            border-width: 0 1.5px 1.5px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+        }
+
+        /* Line between navlinks */
+        li:not(:last-child) {
+            border-right: 1px solid white;
+        }
+
+        /* CSS for styling the form and overlay */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 30px;
+            width: 700px;
+            height: 550px;
+
+        }
+
+        h2 {
+            font-size: 35px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="phone"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #f79647;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 50%;
+
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: orange;
+        }
+
+        .step {
+            color: #f79647;
+            font-size: x-large;
+        }
+
+        /* Styles for the carousel */
+        .carousel {
+            display: block;
+            position: relative;
+            width: 100%;
+            /* Adjust width as needed */
+            height: 700px;
+            /* Adjust height as needed */
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            flex: 0 0 auto;
+            width: 100%;
+            height: 500px;
+            margin-top: 65px;
+        }
+
+        .carousel input[type="radio"] {
+            display: none;
+        }
+
+        .carousel input[type="radio"]:checked+.slides {
+            transform: translateX(-100%);
+        }
+
+        /* Navigation buttons */
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .container2 {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left-column {
+            flex-basis: 40%;
+            padding-right: 20px;
+
+        }
+
+        .right-column {
+            flex-basis: 60%;
+            flex-direction: column;
+            display: flex;
+            gap: 10px;
+        }
+
+        .heading2 {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            margin-bottom: 20px;
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 15px;
+            color: rgb(110, 63, 41);
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .img-container {
+            text-align: center;
+        }
+
+        .image-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .image-item {
+            flex-basis: calc(20% - 10px);
+            /* Five items per row with a 10px margin between */
+            margin-bottom: 20px;
+            overflow: hidden;
+            /* Ensure images don't overflow */
+            height: 350px;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .disclaimer {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid rgb(250, 221, 202);
+            background-color: rgb(250, 221, 202);
+            position: absolute;
+            top: 2040px;
+            /* Adjust as needed */
+            left: 100%;
+            /* Initially start off-screen */
+            white-space: nowrap;
+            /* Prevent line breaks */
+            animation: run 18s linear infinite;
+            /* Adjust animation duration as needed */
+        }
+
+        @keyframes run {
+            0% {
+                left: 100%;
+            }
+
+            /* Start off-screen */
+            100% {
+                left: -100%;
+            }
+
+            /* Move across the screen */
+        }
+
+        .carousel1 {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            /* Fade effect */
+        }
+
+        .slide:nth-child(1) {
+            background-image: url('./images/clean.jpg');
+
+        }
+
+        .slide:nth-child(2) {
+            background-image: url('./images/Aips.jpeg');
+
+        }
+
+        .slide:nth-child(3) {
+            background-image: url('./images/safety.webp');
+
+        }
+
+        /* Keyframe animation for carousel */
+        @keyframes carousel {
+            0% {
+                opacity: 0;
+            }
+
+            33.33% {
+                opacity: 1;
+            }
+
+            66.66% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .slide:nth-child(1) {
+            animation: carousel 9s infinite;
+        }
+
+        .slide:nth-child(2) {
+            animation: carousel 9s infinite;
+            animation-delay: 3s;
+            /* Delay the animation for the second slide */
+        }
+
+        .slide:nth-child(3) {
+            animation: carousel 9s infinite;
+            animation-delay: 6s;
+            /* Delay the animation for the third slide */
+        }
+
+        .image {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .button {
+            background-color: #f79647;
+            color: #fff;
+
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            width: 200px;
+        }
+
+
+        /* CSS for the container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8e7d9;
+        }
+
+        /* CSS for the heading */
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* CSS for the columns */
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .column {
+            flex-basis: calc(25% - 20px);
+            /* 25% width with a 20px margin between columns */
+            margin-bottom: 20px;
+        }
+
+        /* CSS for the content within columns */
+        .column-content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* CSS for responsive design */
+        @media screen and (max-width: 768px) {
+            .column {
+                flex-basis: calc(50% - 20px);
+                /* 50% width for smaller screens */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .column {
+                flex-basis: calc(100% - 20px);
+                /* 100% width for extra small screens */
+            }
+        }
+
+        /* Media Query for Responsive Design */
+        @media screen and (max-width: 992px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header,
+            .nav,
+            .content,
+            .footer {
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header,
+            .nav,
+            .content,
+            .footer {
+                padding: 10px;
+            }
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+
+        }
+
+        .faq-heading {
+            text-align: center;
+        }
+
+        .faq-column {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-left: 0px;
+            width: 1000px;
+        }
+
+        .faq-item {
+            flex-basis: calc(50% - 100px);
+            /* Two items per row with a 10px margin between */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .faq-item h3 {
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .faq-item {
+                flex-basis: 100%;
+                /* Full width for small screens */
+            }
+        }
+
+
+        .message-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            /* Ensure it's above other content */
+        }
+
+        .message-icon img {
+            width: 40px;
+            /* Adjust icon size as needed */
+            height: auto;
+            border-radius: 50%;
+            /* Make it circular */
+            border: 2px solid #fff;
+            /* Add a border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Add a shadow */
+            background-color: #007bff;
+            /* Background color */
+            padding: 10px;
+            /* Add padding for spacing */
+            transition: transform 0.3s ease;
+            /* Add a smooth transition */
+        }
+
+        .message-icon img:hover {
+            transform: scale(1.1);
+            /* Scale up on hover */
+        }
+
+        /* CSS for the footer */
+        footer {
+            background-color: rgb(114, 66, 47);
+            color: rgb(250, 221, 202);
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            height: 500px;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-heading {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-link {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-left: 250px;
+            margin-top: 70px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HTML for the navigation bar -->
+    <nav>
+        <!-- Logo -->
+        <img src="./images/logo_clove_new.png" alt="Logo" class="logo">
+
+        <!-- Navigation Links -->
+        <ul>
+            <li>
+                <a href="#">Treatments <span class="arrow"></span></a>
+
+            </li>
+            <li>
+                <a href="#">Dental Plans <span class="arrow"></span></a>
+
+            </li>
+            <li><a href="#">Our Doctors</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Find a Clinic</a></li>
+        </ul>
+
+        <!-- Button for Booking an Appointment -->
+        <button class="book-appointment" onclick="openForm()"><i class="fa-solid fa-book"></i></i>Book an
+            Appointment</button>
+
+
+        <!-- Dropdown Button for Help -->
+        <div class="dropdown">
+            <button class="help-button"><i class="fa fa-question-circle"></i>Help ?<span class="arrow"></span></button>
+            <div class="dropdown-content">
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- HTML for the carousel -->
+    <div class="carousel">
+        <input type="radio" id="slide1" name="carousel" checked>
+        <input type="radio" id="slide2" name="carousel">
+        <div class="slides">
+            <img class="slide" src="./images/banner2.webp">
+            <img class="slide" src="./images/banner1.webp">>
+        </div>
+        <label class="prev" for="slide1">&#10094;</label>
+        <label class="next" for="slide2">&#10095;</label>
+    </div>
+
+    <div class="container2">
+        <div class="left-column">
+            <div class="heading2">Unmatched Dental Care <br> Excellence by 1000+ specialists </div>
+            <div class="row">A team of specialists</div>
+            <div class="row">Leading with 80% women</div>
+            <div class="row">65% MDS doctors for <br>specialized care</div>
+        </div>
+        <div class="right-column">
+            <img class="image" style="height: 260px; width: 240px;" src="./images/image1.jpg" alt="Image 1">
+            <h3>Dr.Suresh Kumar</h3>
+            <p>18+ years Experience</p>
+            <img class="image" style="height: 260px; width: 240px;" src="./images/image2.jpg" alt="Image 2">
+            <h3>Dr.Rajni Mary</h3>
+            <p>10+ years Experience</p>
+            <a href="#" class="button">Meet Our Doctors +</a>
+
+        </div>
+    </div>
+    <div class="img-container">
+        <h2>In their own words </h2>
+        <div class="image-grid">
+            <div class="image-item"><img src="./images/turban.jpg" alt="Image 1"></div>
+            <div class="image-item"><img src="./images/curly.jpg" alt="Image 2"></div>
+            <div class="image-item"><img src="./images/girl.jpg" alt="Image 3"></div>
+            <div class="image-item"><img src="./images/girl1.jpg" alt="Image 4"></div>
+            <div class="image-item"><img src="./images/smile.jpg" alt="Image 5"></div>
+        </div>
+    </div>
+
+    <div class="disclaimer">7 days open &nbsp;&nbsp; 20 L+ Happy Patients &nbsp;&nbsp; 1200+ Dentists &nbsp;&nbsp; 450+
+        Clinics &nbsp;&nbsp; 7 days open &nbsp;&nbsp; 20 L+ Happy Patients &nbsp;&nbsp; 1200+ Dentists &nbsp;&nbsp; 450+
+        Clinics &nbsp;&nbsp; 7 days open &nbsp;&nbsp; 20 L+ Happy Patients &nbsp;&nbsp; 1200+ Dentists &nbsp;&nbsp; 450+
+        Clinics &nbsp;&nbsp; 7 days open &nbsp;&nbsp; 20 L+ Happy Patients &nbsp;&nbsp; 1200+ Dentists &nbsp;&nbsp; 450+
+        Clinics &nbsp;&nbsp; 7 days open &nbsp;&nbsp; 20 L+ Happy Patients &nbsp;&nbsp; 1200+ Dentists &nbsp;&nbsp; 450+
+        Clinics &nbsp;&nbsp; 7 days open &nbsp;&nbsp; 20 L+ Happy Patients &nbsp;&nbsp; 1200+ Dentists &nbsp;&nbsp; 450+
+        Clinics </div>
+
+
+    <div class="carousel1">
+        <div class="slide" id="slide1"></div>
+        <div class="slide" id="slide2"></div>
+        <div class="slide" id="slide3"></div>
+    </div>
+
+    <!-- HTML for the container -->
+    <div class="container">
+        <!-- Heading -->
+        <h2 class="heading">Beyond Dentistry</h2>
+        <p style="text-align: center; font-size: 18px;">Mapping Success in Every area</p>
+        <!-- Columns -->
+        <div class="columns">
+            <!-- Column 1 -->
+            <div class="column">
+                <div class="column-content">
+                    <img style="height: 210px; width: 245px;" src="./images/eductaional1.jpg">
+                    <p style="text-align: center; font-weight: bold;">Educational Videos</p>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="column">
+                <div class="column-content">
+                    <img style="height: 210px; width: 245px;" src="./images/news.jpg">
+                    <p style="text-align: center; font-weight: bold;">News and Media</p>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="column">
+                <div class="column-content">
+                    <img style="height: 210px; width: 245px;" src="./images/reward.avif">
+                    <p style="text-align: center; font-weight: bold;">Rewards</p>
+                </div>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="column">
+                <div class="column-content">
+                    <img style="height: 210px; width: 245px;" src="./images/careers1.png">
+                    <p style="text-align: center; font-weight: bold;">Careers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- HTML for the form overlay -->
+    <div class="overlay" id="overlay">
+        <div class="form-container">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h2>Book Your Consultation at Clove Dental</h2>
+            <p>Please fill out the form below to book a consultation with clove dental.</p>
+            <h3 class="step">Step 1. Personal Details</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile</label>
+                    <input type="phone" id="mobile" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="otp">Enter Otp</label>
+                    <input type="number" id="otp" name="Otp" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Next">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="faq-container">
+        <h2 class="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-column">
+            <div class="faq-item">
+
+                <p>Can i choose the dentist on my own for <br> treatment ?</p>
+
+                <hr>
+            </div>
+
+            <div class="faq-item">
+
+                <p>Can i choose the dentist on my own for<br> treatment ?</p>
+                <hr>
+            </div>
+
+            <div class="faq-item">
+
+                <p>Will i get the same doctor each time i visit the <br> same clinic ?</p>
+                <hr>
+            </div>
+
+            <div class="faq-item">
+
+                <p>Will i get the same doctor each time i visit the same clinic ?</p>
+                <hr>
+            </div>
+
+            <div class="faq-item">
+
+                <p>How you are able to provide less prices than other<br> dental brands ?</p>
+
+            </div>
+
+            <div class="faq-item">
+
+                <p>How you are able to provide less prices than other<br> dental brands ?</p>
+
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="message-icon"><img src="./images/message.avif" alt="Message"></a>
+
+    <!-- HTML for the dynamic footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2 class="footer-heading">Treatments</h2>
+                <a href="#" class="footer-link">Laser Dentistery</a>
+                <a href="#" class="footer-link">Dental fillings</a>
+                <a href="#" class="footer-link">Root canal Treatment</a>
+                <a href="#" class="footer-link">Wisdom Teeth removal</a>
+                <a href="#" class="footer-link">Braces & Aligners</a>
+                <a href="#" class="footer-link">Clear Aligners</a>
+                <a href="#" class="footer-link">Dental Implants</a>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-heading">Quick Links</h2>
+                <a href="#" class="footer-link">Home</a>
+                <a href="#" class="footer-link">Services</a>
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Locations</a>
+                <a href="#" class="footer-link">Book Appointments</a>
+                <a href="#" class="footer-link">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-heading">Explore Clove</h2>
+                <a href="#" class="footer-link">Our Team</a>
+                <a href="#" class="footer-link">Clinic Overview</a>
+                <a href="#" class="footer-link">Testimonials</a>
+                <a href="#" class="footer-link">Blogs</a>
+                <a href="#" class="footer-link">News</a>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-heading">Legal</h2>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Accessibility</a>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-heading">Connect with Us</h2>
+                <a href="#" class="footer-link">Facebook</a>
+                <a href="#" class="footer-link">Youtube</a>
+                <a href="#" class="footer-link">Instagram</a>
+            </div>
+            <span class="copyright">All rights reserved - 2024, Clove Dental (a brand name of M/s. Star Dental Centre
+                Private Limited)</span>
+        </div>
+    </footer>
+
+    <!-- JavaScript to control the opening and closing of the form -->
+    <script>
+        function openForm() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+
+        function closeForm() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+
+</body>
+
+</html>
